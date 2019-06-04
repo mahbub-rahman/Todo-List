@@ -12,8 +12,15 @@ class TodoListViewController: UITableViewController {
 
     var itemArray = ["Find Mike", "Buy Eggs", "Finish home work"]
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let items = defaults.array(forKey: "TodoListArray") as? [String] {
+            itemArray =  items
+        }
+        
        
     }
     //MARK: - Tablview Datasourse method
@@ -54,7 +61,9 @@ class TodoListViewController: UITableViewController {
             //print("Success!")
             print(textField.text ?? "Nohing to show")
             if let item = textField.text {
+                
                 self.itemArray.append(item)
+                self.defaults.set(self.itemArray, forKey: "TodoListArray")
                 self.tableView.reloadData()
             }
             
