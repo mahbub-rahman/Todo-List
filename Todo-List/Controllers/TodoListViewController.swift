@@ -26,7 +26,7 @@ class TodoListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(dataFilePath)
+        print(dataFilePath ?? "")
        
     }
     //MARK: - Tablview Datasourse method
